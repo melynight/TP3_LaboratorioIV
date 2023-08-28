@@ -13,7 +13,7 @@ public class Principal {
 		{
 			System.out.println("El archivo no existe");
 		}
-		archivo.Escribir_Registros("pepe", "god", "mamarre");
+		archivo.Escribir_Registros("Guido", "Benetti", "8");
 		System.out.println("\n LISTADO: ");
 		archivo.Leer_Registros();
 

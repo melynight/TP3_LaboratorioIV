@@ -33,8 +33,10 @@ public class Archivo {
 			try {
 				FileWriter entrada = new FileWriter(ruta,true);
 				BufferedWriter miBuffer = new BufferedWriter (entrada);
-				miBuffer.write(nombre);
+				miBuffer.write("\n" + nombre);
+				miBuffer.write("-");
 				miBuffer.write(apellido);
+				miBuffer.write("-");
 				miBuffer.write(dni);
 				miBuffer.close();
 				entrada.close();
