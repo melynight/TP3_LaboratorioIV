@@ -22,7 +22,19 @@ public class Persona {
 		this.dni = dni;
 	}
 
-	//Métodos 
+	//Metodos 
+	public static Boolean verificarDniInvalido(String dni) throws DniInvalido {
+		Boolean esLetras = false;
+		
+		if(!dni.matches("[0-9]+")) {
+			esLetras = true;
+		}
+		
+		if(esLetras) {
+			throw new DniInvalido();
+		}
+		else return false;
+	}
 	
 	@Override
 	public String toString() {
