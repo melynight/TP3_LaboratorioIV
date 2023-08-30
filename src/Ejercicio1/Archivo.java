@@ -69,7 +69,7 @@ public class Archivo {
 	
 	public void crearArray() {
 		
-		 ArrayList<String> arr = new ArrayList<String>();
+		 ArrayList<Persona> arr = new ArrayList<Persona>();
 		 
 	        try (BufferedReader br = new BufferedReader(new FileReader("Archivos/Personas.txt")))
 	        {
