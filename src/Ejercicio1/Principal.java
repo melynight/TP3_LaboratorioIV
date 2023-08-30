@@ -1,10 +1,5 @@
 package Ejercicio1;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
 
 public class Principal {
@@ -13,14 +8,9 @@ public class Principal {
 		Archivo archivo=new Archivo();
 		archivo.setRuta("Archivos/Personas.txt");
 		
-		if(archivo.existe()) {
-			System.out.println("El archivo existe");
-		}
-		else 
-		{
-			System.out.println("El archivo no existe");
-		}
 		
+		archivo.verificarArchivo(archivo);
+	
 		System.out.println("\n LISTADO: ");
 		archivo.Leer_Registros();
 
@@ -35,19 +25,8 @@ public class Principal {
 			e.printStackTrace();
 		}
 		
-		  ArrayList<String> arr = new ArrayList<String>();
-	        try (BufferedReader br = new BufferedReader(new FileReader("Archivos/Personas.txt")))
-	        {
+		archivo.crearArray();
 
-	            String sCurrentLine;
-
-	            while ((sCurrentLine = br.readLine()) != null) {
-	                arr.add(sCurrentLine);
-	            }
-
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        } 
-	}
-
+}
+	
 }
