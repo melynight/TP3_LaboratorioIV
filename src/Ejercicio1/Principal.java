@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 public class Principal {
 
 	public static void main(String[] args) {
-		Archivo archivo=new Archivo();
+		ArchivoFileReader archivo=new ArchivoFileReader();
 		archivo.setRuta("Archivos/Personas.txt");
 		
 		
