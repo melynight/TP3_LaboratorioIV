@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ArchivoFileReader {
 
@@ -67,7 +69,8 @@ public class ArchivoFileReader {
 	    	 e.printStackTrace();
 	     } 
 	}
-
+	
+	
 	public void verificarArchivo (ArchivoFileReader archivo) {
 		if(archivo.existe()) {
 			System.out.println("El archivo existe");

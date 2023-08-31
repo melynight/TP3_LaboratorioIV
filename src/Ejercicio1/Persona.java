@@ -1,5 +1,7 @@
 package Ejercicio1;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
@@ -83,6 +85,12 @@ public class Persona {
 	}
 	
 	public void mostrarLista(List<Persona> lista) {
+		
+		Collections.sort(lista, new Comparator<Persona>() {
+			   public int compare(Persona obj1, Persona obj2){
+			      return obj1.getApellido().compareTo(obj2.getApellido());
+			      }
+			});
 	    for (Persona persona : lista) {
 	    	System.out.println("---------------------------------");
 	        System.out.println("Nombre: " + persona.getNombre());
