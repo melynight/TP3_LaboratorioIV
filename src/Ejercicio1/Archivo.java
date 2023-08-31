@@ -80,25 +80,37 @@ public class Archivo {
             while (linea != null) {
                 System.out.println(linea);
                 String[] separador = linea.split("-");
+                
                 if (separador.length == 3) {
+                	
                 	String nombre = separador[0];
                 	String apellido = separador[1];
                 	String dni = separador[2];
                 	Persona nuevaPersona = new Persona(nombre,apellido,dni);
+                	Verificar verificar = new Verificar();
                 	Boolean yaExiste = false;
+                	Boolean dniInvalido = false;
+                	
+                	dniInvalido = verificar.vDNI(dni);
+                	
                 	for(Persona persona : AlPersonas) {
+                		
                 		if(persona.getApellido().equals(nuevaPersona.getApellido()) && 
                 				persona.getDni().equals(nuevaPersona.getDni()) && 
                 				persona.getNombre().equals(nuevaPersona.getNombre())) {
                 			yaExiste = true;
+                			
                 		}
+                		
                 	}
-                	if(!yaExiste) {
+                	if(!yaExiste && !dniInvalido) {
                 		AlPersonas.add(nuevaPersona);
                 	}
                 }
+                
                 linea = miBuffer.readLine();
             }
+            
             miBuffer.close();
             entrada.close();
         } catch (IOException e) {
