@@ -119,6 +119,21 @@ public class Archivo {
         }
         return AlPersonas;
     }
+    
+    public void escribe_lineas(String frase) {
+		try 
+		{	
+			FileWriter entrada = new FileWriter(ruta, true);
+			BufferedWriter miBuffer = new BufferedWriter(entrada);
+			miBuffer.write(frase);
+			miBuffer.close();
+			entrada.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+    
 	
 	public void verificarArchivo (Archivo archivo) {
 		if(archivo.existe()) {

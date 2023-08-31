@@ -16,5 +16,15 @@ public class Principal {
 		Persona p = new Persona();
 		System.out.println("\n LISTADO CORRECTO: ");
 		p.mostrarLista(lista);
+		
+		Archivo archivo1=new Archivo();
+		archivo1.setRuta("Archivos/Resultado.txt");
+		archivo1.verificarArchivo(archivo1);
+		
+		for(int i=0; i<lista.size(); i++)
+		{
+			archivo1.escribe_lineas(lista.get(i).toString() + "\n");
+		} 
+
 	}
 }
