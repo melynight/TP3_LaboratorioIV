@@ -2,7 +2,11 @@ package Ejercicio1;
 
 public class Verificar {
 	
-	public boolean vDNI (String dni) throws DniInvalido {
+	public Verificar() {
+		
+	};
+	
+	public boolean vDNI (String dni)  {
 		
 		Boolean dniInvalido = false;
 		
