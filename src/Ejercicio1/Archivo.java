@@ -70,9 +70,9 @@ public class Archivo {
 	
     public List<Persona> LeerYCargarLista() {
         List<Persona> AlPersonas = new ArrayList<Persona>();
-        String nombre = "";
+        /*String nombre = "";
         String apellido = "";
-        String dni = "";
+        String dni = "";*/
 
         FileReader entrada;
         try {
@@ -84,11 +84,11 @@ public class Archivo {
                 System.out.println(linea);
                 String[] separador = linea.split("-");
                 if (separador.length == 3) {
-                    nombre = separador[0];
-                    apellido = separador[1];
-                    dni = separador[2];
+                	String nombre = separador[0];
+                	String apellido = separador[1];
+                	String dni = separador[2];
+                	AlPersonas.add(new Persona(nombre,apellido,dni));
                 }
-                AlPersonas.add(new Persona(nombre,apellido,dni));
                 linea = miBuffer.readLine();
             }
             miBuffer.close();
