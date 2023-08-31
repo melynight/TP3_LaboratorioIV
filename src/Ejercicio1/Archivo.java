@@ -87,11 +87,18 @@ public class Archivo {
                 	String apellido = separador[1];
                 	String dni = separador[2];
                 	Persona nuevaPersona = new Persona(nombre,apellido,dni);
-                	Verificar verificar = new Verificar();
+                	//Verificar verificar = new Verificar();
                 	Boolean yaExiste = false;
                 	Boolean dniInvalido = false;
                 	
-                	dniInvalido = verificar.vDNI(dni);
+                	//dniInvalido = verificar.vDNI(dni);
+                	
+                	try {
+                        Persona.verificarDniInvalido(dni); 
+                    } catch (DniInvalido e) {
+                        System.out.println(e.getMessage());
+                       
+                    }
                 	
                 	for(Persona persona : AlPersonas) {
                 		
