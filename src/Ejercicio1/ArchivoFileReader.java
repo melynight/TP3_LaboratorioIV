@@ -27,7 +27,6 @@ public class ArchivoFileReader {
 	}
 		
 	public void Escribir_Registros(String registro) {
-		
 		try {
 			FileWriter escribe= new FileWriter(ruta,true);
 			for(int i=0;i<registro.length();i++) {
@@ -35,17 +34,15 @@ public class ArchivoFileReader {
 			}
 			escribe.close();
 				
-				
 			}catch(IOException e){
 				e.printStackTrace();
 				System.out.println("Error en la escritura de registros");
 			}
-			
-		}
+	}
 	
 	public void Leer_Registros() {
 		FileReader entrada;
-       try (BufferedReader miBuffer = new BufferedReader(entrada =new FileReader(ruta))) {
+		try (BufferedReader miBuffer = new BufferedReader(entrada =new FileReader(ruta))) {
             int c;
             while ((c = miBuffer.read()) != -1) {
                 System.out.print((char) c);
@@ -55,45 +52,29 @@ public class ArchivoFileReader {
 			e.printStackTrace();
 			System.out.println("Error en la lectura de registros");
 		}
-		
 	}
-	
-
-	
-	
 	
 	public void crearArray() {
-		
 		 ArrayList<String> arr = new ArrayList<String>();
 		 
-	        try (BufferedReader br = new BufferedReader(new FileReader("Archivos/Personas.txt")))
-	        {
-
-	            String sCurrentLine;
-
-	            while ((sCurrentLine = br.readLine()) != null) {
-	            	
-	                arr.add(sCurrentLine);
-	            }
-
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        } 
+	     try (BufferedReader br = new BufferedReader(new FileReader("Archivos/Personas.txt")))
+	     {
+	    	 String sCurrentLine;
+	    	 while ((sCurrentLine = br.readLine()) != null) {
+	    		 arr.add(sCurrentLine);
+	        }
+	     }catch (IOException e) {
+	    	 e.printStackTrace();
+	     } 
 	}
-	
-	
 
-public void verificarArchivo (ArchivoFileReader archivo) {
-	
-	if(archivo.existe()) {
-		System.out.println("El archivo existe");
+	public void verificarArchivo (ArchivoFileReader archivo) {
+		if(archivo.existe()) {
+			System.out.println("El archivo existe");
+		}
+		else 
+		{
+			System.out.println("El archivo no existe");
+		}
 	}
-	else 
-	{
-		System.out.println("El archivo no existe");
-	}
-	
-	
-}
-	
 }

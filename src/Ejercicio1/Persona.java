@@ -6,11 +6,9 @@ import java.util.Objects;
 public class Persona {
 	
 	//Atributos
-	
 	String nombre, apellido, dni;
 	
 	//Constructores
-	
 	public Persona() {
 		this.nombre = "Sin nombre";
 		this.apellido = "Sin apellido";
@@ -39,7 +37,6 @@ public class Persona {
 	
 	@Override
 	public String toString() {
-		
 		return "Nombre: " + nombre + ", apellido: " + apellido + ", DNI: " + dni;
 	}
 
@@ -87,12 +84,10 @@ public class Persona {
 	
 	public void mostrarLista(List<Persona> lista) {
 	    for (Persona persona : lista) {
+	    	System.out.println("---------------------------------");
 	        System.out.println("Nombre: " + persona.getNombre());
 	        System.out.println("Apellido: " + persona.getApellido());
 	        System.out.println("DNI: " + persona.getDni());
-	        System.out.println("---------------------------------");
 	    }
 	}
-	
-
 }

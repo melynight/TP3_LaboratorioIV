@@ -14,15 +14,13 @@ public class Archivo {
 	
 	private String ruta;
 	
-
-	
 	public String getRuta() {
 			return ruta;
-		}
+	}
 	
 	public void setRuta(String ruta) {
 			this.ruta = ruta;
-		}
+	}
 	
 	public boolean existe() {
 		File archivo=new File(ruta);
@@ -32,23 +30,22 @@ public class Archivo {
 	}
 		
 	public void Escribir_Registros(String nombre,String apellido,String dni) {
-			try {
-				FileWriter entrada = new FileWriter(ruta,true);
-				BufferedWriter miBuffer = new BufferedWriter (entrada);
-				miBuffer.write("\n" + nombre);
-				miBuffer.write("-");
-				miBuffer.write(apellido);
-				miBuffer.write("-");
-				miBuffer.write(dni);
-				miBuffer.close();
-				entrada.close();
+		try {
+			FileWriter entrada = new FileWriter(ruta,true);
+			BufferedWriter miBuffer = new BufferedWriter (entrada);
+			miBuffer.write("\n" + nombre);
+			miBuffer.write("-");
+			miBuffer.write(apellido);
+			miBuffer.write("-");
+			miBuffer.write(dni);
+			miBuffer.close();
+			entrada.close();
 				
-			}catch(IOException e){
-				e.printStackTrace();
-				System.out.println("Error en la escritura de registros");
-			}
-			
+		}catch(IOException e){
+			e.printStackTrace();
+			System.out.println("Error en la escritura de registros");
 		}
+	}
 	
 	public void Leer_Registros() {
 		try {
@@ -60,12 +57,12 @@ public class Archivo {
 				linea = miBuffer.readLine();
 			}
 			entrada.close();
+			miBuffer.close();
 			
 		}catch(IOException e){
 			e.printStackTrace();
 			System.out.println("Error en la lectura de registros");
-		}
-		
+		}	
 	}
 	
     public List<Persona> LeerYCargarLista() {
@@ -79,7 +76,7 @@ public class Archivo {
             entrada = new FileReader(ruta);
             BufferedReader miBuffer = new BufferedReader(entrada);
 
-           String linea = "";
+            String linea = "";
             while (linea != null) {
                 System.out.println(linea);
                 String[] separador = linea.split("-");
@@ -87,13 +84,23 @@ public class Archivo {
                 	String nombre = separador[0];
                 	String apellido = separador[1];
                 	String dni = separador[2];
-                	AlPersonas.add(new Persona(nombre,apellido,dni));
+                	Persona nuevaPersona = new Persona(nombre,apellido,dni);
+                	Boolean yaExiste = false;
+                	for(Persona persona : AlPersonas) {
+                		if(persona.getApellido().equals(nuevaPersona.getApellido()) && 
+                				persona.getDni().equals(nuevaPersona.getDni()) && 
+                				persona.getNombre().equals(nuevaPersona.getNombre())) {
+                			yaExiste = true;
+                		}
+                	}
+                	if(!yaExiste) {
+                		AlPersonas.add(nuevaPersona);
+                	}
                 }
                 linea = miBuffer.readLine();
             }
             miBuffer.close();
             entrada.close();
-
         } catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("Error en la lectura de registros");
@@ -101,20 +108,13 @@ public class Archivo {
         return AlPersonas;
     }
 	
-	
-
-public void verificarArchivo (Archivo archivo) {
-	
-	if(archivo.existe()) {
-		System.out.println("El archivo existe");
+	public void verificarArchivo (Archivo archivo) {
+		if(archivo.existe()) {
+			System.out.println("El archivo existe");
+		}
+		else 
+		{
+			System.out.println("El archivo no existe");
+		}
 	}
-	else 
-	{
-		System.out.println("El archivo no existe");
-	}
-	
-	
-}
-
  }
-
