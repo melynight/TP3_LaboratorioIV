@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Archivo {
@@ -67,24 +68,38 @@ public class Archivo {
 		
 	}
 	
-	public void crearArray() {
-		
-		 ArrayList<Persona> arr = new ArrayList<Persona>();
-		 
-	        try (BufferedReader br = new BufferedReader(new FileReader("Archivos/Personas.txt")))
-	        {
+    public List<Persona> LeerYCargarLista() {
+        List<Persona> AlPersonas = new ArrayList<Persona>();
+        String nombre = "";
+        String apellido = "";
+        String dni = "";
 
-	            String sCurrentLine;
+        FileReader entrada;
+        try {
+            entrada = new FileReader(ruta);
+            BufferedReader miBuffer = new BufferedReader(entrada);
 
-	            while ((sCurrentLine = br.readLine()) != null) {
-	            	
-	                arr.add(sCurrentLine);
-	            }
+           String linea = "";
+            while (linea != null) {
+                System.out.println(linea);
+                String[] separador = linea.split("-");
+                if (separador.length == 3) {
+                    nombre = separador[0];
+                    apellido = separador[1];
+                    dni = separador[2];
+                }
+                AlPersonas.add(new Persona(nombre,apellido,dni));
+                linea = miBuffer.readLine();
+            }
+            miBuffer.close();
+            entrada.close();
 
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        } 
-	}
+        } catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("Error en la lectura de registros");
+        }
+        return AlPersonas;
+    }
 	
 	
 

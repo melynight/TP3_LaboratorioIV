@@ -1,18 +1,20 @@
 package Ejercicio1;
 
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
 public class Principal {
 
 	public static void main(String[] args) {
-		ArchivoFileReader archivo=new ArchivoFileReader();
+		Archivo archivo=new Archivo();
 		archivo.setRuta("Archivos/Personas.txt");
 		
 		
 		archivo.verificarArchivo(archivo);
 	
 		System.out.println("\n LISTADO: ");
-		archivo.Leer_Registros();
+		//archivo.Leer_Registros();
 
 		String dni = JOptionPane.showInputDialog("Ingrese un dni:");
 		try {
@@ -24,8 +26,13 @@ public class Principal {
 			System.out.println("El dni ingresado es invalido, solo ingrese numeros.");
 			e.printStackTrace();
 		}
+		List<Persona> lista= archivo.LeerYCargarLista();
 		
-		archivo.crearArray();
+		Persona p = new Persona();
+		p.mostrarLista(lista);
+		
+		
+		
 
 }
 	

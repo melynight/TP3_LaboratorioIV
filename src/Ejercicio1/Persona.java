@@ -1,5 +1,6 @@
 package Ejercicio1;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Persona {
@@ -84,7 +85,14 @@ public class Persona {
 		this.dni = dni;
 	}
 	
-	
+	public void mostrarLista(List<Persona> lista) {
+	    for (Persona persona : lista) {
+	        System.out.println("Nombre: " + persona.getNombre());
+	        System.out.println("Apellido: " + persona.getApellido());
+	        System.out.println("DNI: " + persona.getDni());
+	        System.out.println("---------------------------------");
+	    }
+	}
 	
 
 }
