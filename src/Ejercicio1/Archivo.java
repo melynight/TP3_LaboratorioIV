@@ -67,9 +67,6 @@ public class Archivo {
 	
     public List<Persona> LeerYCargarLista() {
         List<Persona> AlPersonas = new ArrayList<Persona>();
-        /*String nombre = "";
-        String apellido = "";
-        String dni = "";*/
 
         FileReader entrada;
         try {
@@ -87,11 +84,11 @@ public class Archivo {
                 	String apellido = separador[1];
                 	String dni = separador[2];
                 	Persona nuevaPersona = new Persona(nombre,apellido,dni);
-                	//Verificar verificar = new Verificar();
+                	Verificar verificar = new Verificar();
                 	Boolean yaExiste = false;
                 	Boolean dniInvalido = false;
                 	
-                	//dniInvalido = verificar.vDNI(dni);
+                	dniInvalido = verificar.vDNI(dni);
                 	
                 	try {
                         Persona.verificarDniInvalido(dni); 
@@ -148,7 +145,7 @@ public class Archivo {
 		}
 		else 
 		{
-			System.out.println("El archivo no existe");
+			System.out.println("El archivo no existe,Lo creamos!");
 		}
 	}
  }
